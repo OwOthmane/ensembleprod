@@ -1,0 +1,1607 @@
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, p, a {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+body {
+    background: linear-gradient(180deg, #1a1a1a, #333333); /* Gradient background */
+    color: #fff; /* White text for normal content */
+    line-height: 1.6;
+}
+
+/* Preloader Animation */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffe816; /* Yellow background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 1s ease; /* Fade out background */
+}
+
+#preloader .logo-container img {
+    width: 200px;
+    height: auto;
+    transition: transform 1s ease; /* Logo scaling and moving */
+}
+
+/* Animation for the logo moving to the corner */
+.logo-move {
+    transform: translate(-45vw, 45vh) scale(0.4); /* Move to bottom left and scale down */
+    transition: transform 1s ease; /* Smooth transition */
+}
+
+/* Sticky Navigation */
+header {
+    background-color: #000; /* Plain black background */
+    color: #ffe816;
+    padding: 20px 30px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+}
+
+nav ul li {
+    margin: 0 20px; /* Spacing between the items */
+}
+
+nav a {
+    color: #ffe816;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative; /* For underline effect */
+    display: flex;
+    align-items: center; /* Align icons with text */
+}
+
+nav a i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #ffe816;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%; /* Underline animation */
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown a {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+    transform: translateY(20px); /* Dropdown start below */
+    border-radius: 8px;
+    padding: 10px 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Dropdown slides up */
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 6px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ffe816;
+    color: #000;
+}
+
+/* Arrow Icon Styling */
+.fas.fa-chevron-down {
+    margin-left: 8px;
+}
+
+/* Sticky Semi-Circle at Bottom Left */
+.sticky-logo-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-color: #ffe816;
+    clip-path: circle(50% at 0% 100%);
+    z-index: 998;
+}
+
+/* Logo Positioned on Top of Semi-Circle */
+.sticky-logo {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    z-index: 1000;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.sticky-logo img {
+    width: 60px;
+    height: auto;
+    background-color: #ffe816;
+}
+
+/* Section Styling */
+.section {
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 800px;
+}
+
+.section:nth-child(even) {
+    background: #111;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    text-align: center; /* Ajoute cette ligne */
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: center; /* Ajoute cette ligne */
+    margin-bottom: 30px;
+    color: #bbb;
+}
+
+/* Slider styling */
+/* SLIDER avec ratio 16:9 */
+.slider {
+    width: 100%;
+    aspect-ratio: 16/9;   /* Force un cadre 16:9, uniforme pour toutes les images */
+    position: relative;
+    overflow: hidden;
+    margin: 30px 0;       /* Optionnel: un peu d'espace autour */
+}
+
+/* Conteneur des images */
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+}
+
+/* Images superposées (position absolute) */
+.slides img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;         
+    object-fit: cover;    /* Recadre automatiquement pour remplir le ratio 16:9 */
+    opacity: 0;           /* Caché par défaut */
+    transition: opacity 1s ease-in-out;
+}
+
+/* L'image active devient visible (opacité 1) */
+.slides img.active {
+    opacity: 1;
+}
+
+
+
+
+/* Grille des productions statique en 2 colonnes et centrée */
+.productions-grid-container {
+    display: flex;
+    justify-content: center; /* Centre la grille */
+    padding: 20px 0;
+}
+
+.productions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    gap: 20px;
+    width: 90%; /* Prend 90% de la largeur disponible */
+    max-width: 1200px; /* Limite la largeur maximale */
+}
+
+/* Grille des sessions d'acting */
+.sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+/* Grille des sessions d'écriture */
+.sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+/* Section des Updates centrée */
+.updates-section {
+    padding: 60px 20px;
+    background-color: #111;
+    color: #fff;
+    text-align: center; /* Centrer le texte */
+}
+
+.updates-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.updates-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px; /* Limiter la largeur des updates */
+    margin: 0 auto; /* Centre horizontalement */
+}
+
+.update-item {
+    display: flex;
+    flex-direction: column; /* Aligner les updates verticalement */
+    align-items: center; /* Centre les éléments */
+    margin-bottom: 30px;
+}
+
+.update-date {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffe816;
+    margin-bottom: 10px;
+}
+
+.update-content {
+    text-align: center; /* Centrer le texte */
+}
+
+.update-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.update-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #bbb;
+}
+
+
+
+/* Section Blog */
+.blog-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+}
+
+.blog-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.blog-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.blog-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.blog-info {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+}
+
+.blog-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.blog-info p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+.blog-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffe816;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.blog-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Bouton pour voir le blog complet */
+.external-blog-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.external-blog-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+.session-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.session-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.session-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.session-info {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+}
+
+.session-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.session-info p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+.session-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffe816;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.session-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
+.session-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.session-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.session-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.session-info {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+}
+
+.session-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.session-info p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+.session-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffe816;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.session-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.production-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.production-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.production-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.production-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.production-item:hover .production-info {
+    opacity: 1;
+}
+
+.production-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 5px;
+}
+
+.production-info p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+
+/* New Join Section with pulsing button */
+.join-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #000;
+    color: #ffe816;
+}
+
+.join-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.join-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.join-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    animation: pulse 2s infinite; /* Pulsating animation */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.join-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Section Chaîne YouTube */
+.youtube-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #111;
+    color: #fff;
+}
+
+.youtube-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.youtube-section p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #bbb;
+}
+
+.youtube-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.youtube-btn i {
+    margin-right: 10px;
+}
+
+.youtube-btn:hover {
+    background-color: #c40000;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: #fff;
+}
+
+footer p, footer a {
+    color: #fff;
+}
+
+footer a {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffe816;
+}
+
+.page-title h1 {
+    margin-top: 40px; /* Ajuste la valeur si besoin */
+}
+
+/* Section des instructions de soumission */
+.submission-instructions {
+    padding: 40px 20px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+}
+
+.submission-instructions h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.submission-instructions p, .submission-instructions ul {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #bbb;
+}
+
+.submission-instructions ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.submission-instructions ul li {
+    margin: 10px 0;
+    color: #ffe816;
+}
+
+/* Formulaire de soumission */
+.submission-form {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #222;
+}
+
+.submission-form h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.submission-form form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.submission-form label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: left;
+}
+
+.submission-form input, .submission-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+}
+
+.submission-form button.submit-btn {
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submission-form button.submit-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Section Contact */
+.contact-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+}
+
+.contact-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #bbb;
+}
+
+.contact-section a {
+    color: #ffe816;
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Section Goodies Coming Soon */
+.goodies-coming-soon {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+}
+
+.goodies-coming-soon .coming-soon-content {
+    max-width: 800px;
+    margin: 0 auto; /* Centrer le contenu */
+}
+
+.goodies-coming-soon h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.goodies-coming-soon p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.goodies-coming-soon img {
+    width: 100%;
+    max-width: 400px; /* Limite la taille de l'image */
+    margin: 30px 0;
+    border-radius: 10px;
+    opacity: 0.9;
+}
+
+/* Formulaire d'alerte pour l'ouverture de la boutique */
+.notify-form {
+    margin-top: 30px;
+}
+
+.notify-form input {
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+    width: 250px;
+    max-width: 100%;
+}
+
+.notify-form button {
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.notify-form button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Section Contact Info */
+.contact-info {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+}
+
+.contact-info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    margin: 20px 0;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #ffe816;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #fff;
+}
+
+.contact-details {
+    margin: 30px 0;
+}
+
+.contact-details p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.contact-details i {
+    color: #ffe816;
+    margin-right: 10px;
+}
+
+.contact-details a {
+    color: #ffe816;
+    text-decoration: none;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Section Formulaire de Contact */
+.contact-form {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+}
+
+.contact-form h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact-form form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: left;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+}
+
+.contact-form button.submit-btn {
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button.submit-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Section Équipe */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    gap: 40px;
+    justify-items: center;
+    padding: 60px 20px;
+}
+
+.team-member {
+    background-color: #1a1a1a; /* Couleur de fond */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Ombre un peu plus forte */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 100%;
+    max-width: 900px; /* Augmente la largeur maximale */
+    padding-bottom: 30px; /* Augmente l'espace en bas */
+    min-height: 500px; /* Hauteur minimale pour agrandir le rectangle */
+}
+
+.team-member img {
+    width: 100%;
+    height: 500px; /* Augmente la hauteur pour donner plus d'espace à l'image */
+    object-fit: cover;
+    border-bottom: 6px solid #ffe816; /* Bordure jaune en bas */
+}
+
+.team-info {
+    padding: 40px; /* Augmente l'espace autour du texte */
+    color: #fff;
+}
+
+.team-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+.team-info p {
+    text-align: justify; /* Justifie le texte */
+    text-justify: inter-word; /* Ajoute de l'espacement entre les mots */
+    line-height: 1.6; /* Améliore la lisibilité */
+    margin-bottom: 10px;
+}
+
+.team-info p:first-of-type {
+    text-align: center; /* Centre uniquement le premier <p> (le titre) */
+    font-weight: bold; /* Met en gras pour le différencier */
+    color: #ffe816; /* Mets-le en jaune pour le rendre plus visible */
+}
+
+.about-questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.question-button {
+    background-color: #ffe816; /* Jaune */
+    color: #000;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 80%; /* Prend 80% de la largeur pour bien occuper la page */
+    max-width: 600px; /* Limite la taille max */
+    text-align: left; /* Texte aligné à gauche */
+    position: relative;
+}
+
+.question-button::before {
+    content: "❓"; /* Ajout d'une icône question */
+    margin-right: 10px;
+}
+
+.question-button:hover {
+    background-color: #ffd600;
+    transform: scale(1.05);
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Masque par défaut */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre avec opacité */
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 700px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #ffe816;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: #ffd600;
+}
+
+.accueil-text {
+    max-width: 900px;      /* Limite la largeur pour plus de lisibilité */
+    margin: 40px auto;     /* Centre horizontalement + espace en haut/bas */
+    font-size: 1.4rem;     /* Texte un peu plus grand */
+    line-height: 2;        /* Espacement entre les lignes confortable */
+    text-align: justify;   /* Justifie tout le bloc */
+}
+
+.accueil-text p {
+    text-align: justify;
+    text-justify: inter-word; /* Équilibre les espaces entre les mots (optionnel) */
+}
+.video-section {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 1000px; /* Limite la largeur pour ne pas qu'elle soit trop grande */
+}
+
+.video-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #ffe816; /* Couleur jaune pour matcher le style du site */
+}
+
+.video-section video {
+    width: 100%;
+    max-width: 800px; /* Taille max de la vidéo */
+    border-radius: 10px; /* Coins arrondis pour un effet propre */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre légère */
+}
+
+/* Section Production Unique */
+.featured-production {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.featured-production h1 {
+    font-size: 2.5rem;
+    color: #ffe816;
+    margin-bottom: 20px;
+}
+
+.featured-production img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+}
+
+.production-details p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.watch-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.watch-btn:hover {
+    background-color: #ffd600;
+}
+
+/* Section Viméo */
+.vimeo-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #111;
+    color: #fff;
+}
+
+.vimeo-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.vimeo-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #bbb;
+}
+
+.vimeo-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #1ab7ea;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.vimeo-btn i {
+    margin-right: 10px;
+}
+
+.vimeo-btn:hover {
+    background-color: #008ac9;
+}
+
+/* Liste déroulante des sessions d'acting */
+.acting-sessions {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.session-list {
+    margin-top: 20px;
+}
+
+.session-item {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.session-header {
+    background-color: #ffe816;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+}
+
+.session-header::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.session-item.active .session-header::after {
+    transform: rotate(180deg);
+}
+
+.session-content {
+    display: none;
+    padding: 15px;
+    background-color: #222;
+    text-align: left;
+}
+
+.session-content p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.session-link {
+    display: block;
+    color: #ffe816;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+
+.session-link:hover {
+    color: #ffd600;
+}
+
+/* Section Atelier d'Écriture */
+.writing-workshop {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.writing-workshop h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.writing-workshop p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+/* Galerie des Ateliers */
+.writing-gallery {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.writing-gallery h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Soumission de Scénarios */
+.submission-form {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.submission-form h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.submission-form p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+/* Bouton de soumission */
+.submission-button {
+    margin-top: 20px;
+}
+
+.submit-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #ffd600;
+    transform: scale(1.05);
+}
+
+/* --- Amélioration du style de la page Soumission --- */
+
+/* Section Instructions de soumission (cartes + ombres) */
+.submission-instructions {
+    max-width: 800px;              /* Limite la largeur pour plus de lisibilité */
+    margin: 40px auto;             /* Centre la section */
+    background-color: #1f1f1f;     /* Légèrement plus clair que #111 pour la distinguer */
+    border-radius: 10px;           /* Coins arrondis */
+    padding: 30px 20px;            /* Espace intérieur */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée discrète */
+}
+
+.submission-instructions h2 {
+    font-size: 2rem;
+    color: #ffe816;                /* Titre en jaune pour ressortir */
+    margin-bottom: 20px;
+}
+
+.submission-instructions p,
+.submission-instructions ul {
+    font-size: 1.2rem;
+    color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;              /* Pour un alignement plus naturel */
+}
+
+.submission-instructions ul li {
+    margin-left: 20px;
+    list-style: disc;
+}
+
+/* Formulaire de soumission (même idée de carte) */
+.submission-form {
+    max-width: 800px;
+    margin: 40px auto;             
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submission-form h2 {
+    color: #ffe816;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.submission-form p {
+    color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;    /* On peut aligner à gauche pour un rendu plus pro */
+}
+
+/* Bouton de soumission (plus visible, avec effet hover) */
+.submission-button {
+    margin-top: 20px;
+}
+
+.submission-button a.submit-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submission-button a.submit-btn:hover {
+    background-color: #fff;
+    transform: scale(1.05); /* Légère mise en avant au survol */
+}
+
+/***************************************
+** CONTACT PAGE STYLING
+***************************************/
+
+/* Pour limiter la largeur et centrer le tout */
+.contact-info {
+    max-width: 1000px;        /* Largeur max confortable */
+    margin: 40px auto;        /* Centre horizontalement, espace en haut/bas */
+    text-align: center;       /* Centre les titres, etc. */
+    background-color: transparent; /* Pas de fond global, on va utiliser des cartes */
+}
+
+/* Petite phrase d'intro dans .contact-info */
+.contact-info p {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Cards pour chaque bloc (Réseaux, Coordonnées, etc.) */
+.contact-card {
+    background-color: #1f1f1f;       /* Légèrement plus clair que #111 */
+    border-radius: 10px;            /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Ombre portée */
+    padding: 30px 20px;
+    margin-bottom: 20px;
+}
+
+.contact-card h3 {
+    color: #ffe816;        /* Titre en jaune pour le contraste */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    margin: 20px 0;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #ffe816;
+    font-size: 2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Infos de contact (email, adresse) */
+.contact-details {
+    text-align: left; /* On aligne à gauche pour plus de lisibilité */
+    margin-top: 15px;
+}
+
+.contact-details p {
+    color: #bbb;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* Aligne l'icône avec le texte */
+}
+
+.contact-details i {
+    color: #ffe816;
+    margin-right: 10px;
+    font-size: 1.3rem;
+}
+
+.contact-details a {
+    color: #ffe816;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* Page Faire un Don */
+.donation-section {
+    max-width: 900px;         /* Limiter la largeur */
+    margin: 40px auto;        /* Centre la section, marge en haut/bas */
+    background-color: #1f1f1f;/* Légèrement plus clair que #111 */
+    border-radius: 10px;      
+    padding: 30px 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.donation-content h2 {
+    font-size: 2rem;
+    color: #ffe816; /* Titre en jaune */
+    margin-bottom: 20px;
+}
+
+.donation-content p {
+    color: #bbb;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left; /* Option: on justifie à gauche pour la lecture */
+}
+
+/* Bouton Don */
+.donate-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ffe816;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.donate-btn:hover {
+    background-color: #fff;
+    transform: scale(1.05);
+}

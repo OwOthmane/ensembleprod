@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Ensemble Production</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.webp">
+    <!-- Polices et styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Preloader Animation -->
+    <div id="preloader">
+        <div class="logo-container">
+            <img src="assets/images/logo.png" alt="Ensemble Production Logo" id="logo-animation">
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="productions.html"><i class="fas fa-video"></i> Productions</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-users"></i> Nous Connaître <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="actings.html">Nos Sessions Acting</a>
+                        <a href="ecriture.html">Nos Sessions Écriture</a>
+                        <a href="team.html">Notre Équipe</a>
+                        <a href="don.html">Faire un Don</a> <!-- NOUVEAU LIEN -->
+                    </div>
+                </li>                
+                <li><a href="scenario.html"><i class="fas fa-pencil-alt"></i> Scénarios</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sticky Semi-Circle Background -->
+    <div class="sticky-logo-container"></div>
+
+    <!-- Logo on top of semi-circle -->
+    <div class="sticky-logo" onclick="location.href='about.html'">
+        <img src="assets/images/logo.png" alt="Ensemble Production Logo">
+    </div>
+
+    <!-- Home Section with Slider -->
+    <section id="accueil" class="section">
+        <h1>Bienvenue à Ensemble Production</h1>
+        <p>Explorez l'univers du cinéma avec nous!</p>
+
+        <!-- Slider Section -->
+        <div class="slider">
+            <div class="slides">
+                <img src="assets/images/film1.jpg" alt="Film 1">
+                <img src="assets/images/film3.jpg" alt="Film 2">
+                <img src="assets/images/film4.jpg" alt="Film 3">
+            </div>
+        </div>
+
+        <!-- Arbitrary content to allow for scrolling -->
+        <div class="accueil-text">
+            <p>Ensemble production est une association qui vise à fédérer une communauté afin de mettre en œuvre des projets artistiques, notamment cinématographiques et audiovisuels, tels que des courts-métrages.</p>
+            <p>Créée par des étudiants au sein de l’université Sorbonne Nouvelle Paris 3, l’association s’adresse principalement à un public jeune et étudiant tout en étant ouverte à tous. Notre volonté est de mener de A à Z l’ensemble des étapes nécessaires à l’aboutissement d’un projet via des ateliers d’écritures, de pratique technique, d’acting, et autres.</p>
+            <p>Depuis sa création en Janvier 2024 et sa soirée de lancement en mars 2024, l’association a permis de réunir plus de 180 personnes, et a mené un 1er projet de court-métrage nommé DUOCHROMIE, autour d’une thématique importante : la maladie.</p>
+            <p>Nous souhaitons mener des projets en tous genres, et rester ouverts à toute forme de création. Nos projets sont intégralement réalisés par nos membres, sans prestations de professionnels. Notre objectif est simple : produire des projets de qualité avec des moyens accessibles, tout en acceptant que l'erreur fait partie du processus d’apprentissage.</p>
+            <p>Ensemble Production se veut comme une famille, où l’humain, l’entraide et la solidarité sont au cœur de la création 🎬</p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <h2>Découvrez Ensemble Production en vidéo</h2>
+        <video controls>
+            <source src="assets/videos/video_acceuil.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+    </section>
+
+    <section class="about-questions">
+        <button class="question-button" data-modal="modal1">Qui sommes-nous ?</button>
+        <button class="question-button" data-modal="modal2">Quel est notre but ?</button>
+        <button class="question-button" data-modal="modal3">Qu'est-ce qu'on fait ?</button>
+    
+        <!-- Modals (Popups) pour chaque question -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close" data-close="modal1">&times;</span>
+                <img src="assets/images/IMG-20241103-WA0014.jpg" alt="Qui sommes-nous ?">
+                <p>Ensemble Production est une association composée d’étudiants passionnés de cinéma de la Sorbonne. Unis par une vision commune, nous travaillons ensemble pour créer des œuvres cinématographiques uniques.</p>
+            </div>
+        </div>
+    
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close" data-close="modal2">&times;</span>
+                <img src="assets/images/IMG-20241103-WA0011.jpg" alt="Notre But">
+                <p>Nous avons pour but de promouvoir un cinéma accessible et collaboratif, tout en offrant des opportunités créatives aux étudiants et passionnés de cinéma.</p>
+            </div>
+        </div>
+    
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <span class="close" data-close="modal3">&times;</span>
+                <img src="assets/images/IMG-20241103-WA0010.jpg" alt="Qu'est-ce qu'on fait ?">
+                <p>Nous aidons les étudiants à entreprendre des projets en cinéma, pour leur offrir la meilleure expérience possible et leur permettre de s'exprimer à travers le cinéma.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- New "Rejoignez-nous" Section -->
+    <section id="join-us" class="join-section">
+        <h2>Intéressé à rejoindre notre équipe ?</h2>
+        <p>Ensemble Production est toujours à la recherche de nouveaux talents passionnés par le cinéma.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeM-YCE8-a4SlonmhGZWf7RbtqEpumGrYwcgY5j4CGb1dlxWw/viewform" class="join-btn">Devenez membre</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Ensemble Production | <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
