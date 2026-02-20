@@ -38,12 +38,6 @@ body {
     transition: transform 1s ease; /* Logo scaling and moving */
 }
 
-/* Animation for the logo moving to the corner */
-.logo-move {
-    transform: translate(-45vw, 45vh) scale(0.4); /* Move to bottom left and scale down */
-    transition: transform 1s ease; /* Smooth transition */
-}
-
 /* Sticky Navigation */
 header {
     background-color: #000; /* Plain black background */
